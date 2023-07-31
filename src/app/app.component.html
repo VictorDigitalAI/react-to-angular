@@ -5,16 +5,22 @@
         <div>User Icon</div>
     </header>
     <main>
-        <products></products>
-        <react-counter-wrapper [counter]="counter"
-                               (onIncrease)="handleOnChildClick()"></react-counter-wrapper>
+        <div>
+            <label>Angular component with Angular Library component</label>
+            <products></products>
+        </div>
+        <div>
+            <label>Angular component with React Library component</label>
+            <react-selector-wrapper></react-selector-wrapper>
+        </div>
+        <div>
+            <label>Angular component with React Custom Implemented component</label>
+            <react-counter-wrapper [counter]="counter" (onIncrease)="handleOnChildClick()"></react-counter-wrapper>
+        </div>
     </main>
     <footer>
         <div>Logo</div>
         <div>Lorem ipsum.</div>
         <div>User Icon</div>
     </footer>
-</div>
-<div>
-    <app-switcher></app-switcher>
 </div>

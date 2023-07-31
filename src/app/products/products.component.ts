@@ -1,22 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {Product, ProductsService} from './products.service';
-import DataSource from 'devextreme/data/data_source';
+import {Component} from '@angular/core';
+import {ProductsService} from './products.service';
 
 @Component({
     selector: 'products',
     templateUrl: './products.component.html',
     styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
-
-    products!: DataSource<Product>;
-
-    constructor(private productService: ProductsService) {
-    }
-
-    ngOnInit(): void {
-        this.productService.fetch().subscribe(res => {
-            this.products = new DataSource<Product>(res.products);
-        })
+export class ProductsComponent {
+    constructor(public productService: ProductsService) {
     }
 }

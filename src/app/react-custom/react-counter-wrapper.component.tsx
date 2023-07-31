@@ -1,7 +1,7 @@
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import Counter from './Counter';
-import * as ReactDOM from 'react-dom';
-import * as React from 'react';
 
 const rootDomID: string = "reactCounterWrapperId";
 
@@ -15,12 +15,7 @@ export class ReactCounterWrapperComponent implements OnInit, OnDestroy, OnChange
     @Input() public counter = 5;
     @Output() public onIncrease = new EventEmitter<void>();
 
-    constructor() {
-        this.handleIncrease = this.handleIncrease.bind(this);
-        // Or using `private handleIncrease = () => {...}` to eliminate this binding.
-    }
-
-    public handleIncrease() {
+    public handleIncrease = () => {
         if (this.onIncrease) {
             this.onIncrease.emit();
             this.render();
@@ -29,10 +24,6 @@ export class ReactCounterWrapperComponent implements OnInit, OnDestroy, OnChange
 
     private getRootDomNode() {
         if (!this.containerRef || !this.containerRef.nativeElement) {
-            // const newRootEl = document.createElement("span");
-            // newRootEl.setAttribute("id", rootDomID);
-            // document.body.appendChild(newRootEl);
-            // return newRootEl;
             throw new Error("Cannot get root element. This should not happen.");
         }
         return this.containerRef.nativeElement;
@@ -40,14 +31,14 @@ export class ReactCounterWrapperComponent implements OnInit, OnDestroy, OnChange
 
     protected render() {
         if (!this.containerRef || !this.containerRef.nativeElement) return;
-        const {counter} = this;
         ReactDOM.render(
-            <Counter counter={counter} onIncrease={this.handleIncrease}/>,
+            <Counter counter={this.counter} onIncrease={this.handleIncrease}/>,
             this.getRootDomNode()
         );
     }
 
     ngOnInit() {
+        this.render();
     }
 
     ngOnChanges() {

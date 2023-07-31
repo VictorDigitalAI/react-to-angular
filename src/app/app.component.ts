@@ -1,4 +1,7 @@
 import {Component} from '@angular/core';
+import * as React from 'react';
+
+window.React = React;
 
 @Component({
     selector: 'app-root',

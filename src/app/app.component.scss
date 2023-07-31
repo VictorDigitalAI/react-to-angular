@@ -9,6 +9,22 @@ header {
 }
 
 main {
+  display: flex;
   height: calc(100% - 100px);
   padding: 8px;
+
+  & > div {
+    flex: 1;
+    margin: 5px;
+    border: 2px silver solid;
+    padding: 16px;
+
+    & > label {
+      font-size: 18px;
+      color: cornflowerblue;
+      text-align: center;
+      display: block;
+      padding: 10px;
+    }
+  }
 }

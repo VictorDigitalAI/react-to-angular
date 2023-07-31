@@ -27,6 +27,7 @@ export interface Product {
     providedIn: 'root'
 })
 export class ProductsService {
+    selectedProducts: Product[] = [];
 
     constructor(private http: HttpClient) {
     }
